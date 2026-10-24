@@ -1,0 +1,6 @@
+{
+  "name": "Math Run 3D — سباق الرياضيات",
+  "description": "لعبة سباق ومغامرات ثلاثية الأبعاد ممتعة تجمع بين الركض وتحديات حل المسائل الرياضية وتجاوز العقبات وجمع العملات.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

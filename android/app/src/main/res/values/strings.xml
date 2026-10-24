@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Math Run 3D</string>
+    <string name="title_activity_main">Math Run 3D</string>
+    <string name="package_name">com.mathrun3d.game</string>
+    <string name="custom_url_scheme">com.mathrun3d.game</string>
+</resources>

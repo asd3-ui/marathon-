@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="bgGrad192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#091e3a" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+  </defs>
+
+  <rect width="192" height="192" rx="42" fill="url(#bgGrad192)" />
+  <rect width="188" height="188" x="2" y="2" rx="40" fill="none" stroke="#38bdf8" stroke-width="2" stroke-opacity="0.4" />
+
+  <!-- Road -->
+  <polygon points="45,176 81,71 111,71 147,176" fill="#031024" stroke="#0284c7" stroke-width="1.5" />
+  <line x1="79" y1="176" x2="91" y2="71" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 4" />
+  <line x1="113" y1="176" x2="101" y2="71" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 4" />
+
+  <!-- Runner -->
+  <g transform="translate(96, 126) scale(0.44)">
+    <ellipse cx="-16" cy="38" rx="7" ry="16" fill="#f97316" />
+    <ellipse cx="16" cy="38" rx="7" ry="16" fill="#f97316" />
+    <rect x="-22" y="-5" width="44" height="34" rx="8" fill="#0f172a" stroke="#00f0ff" stroke-width="2.5" />
+    <path d="M -22 10 L -15 -35 L 15 -35 L 22 10 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="2" />
+    <circle cx="0" cy="-48" r="18" fill="#1e293b" />
+    <path d="M -14 -46 Q 0 -54 14 -46 Q 0 -42 -14 -46 Z" fill="#00f0ff" />
+    <path d="M -18 -26 L -36 -6 L -32 14" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round" />
+    <path d="M 18 -26 L 36 -12 L 30 10" fill="none" stroke="#0284c7" stroke-width="8" stroke-linecap="round" />
+    <path d="M -10 10 L -22 46 L -32 74" fill="none" stroke="#0f172a" stroke-width="9" stroke-linecap="round" />
+    <path d="M 10 10 L 24 38 L 18 68" fill="none" stroke="#1e293b" stroke-width="9" stroke-linecap="round" />
+  </g>
+
+  <!-- Math Symbols -->
+  <circle cx="32" cy="56" r="12" fill="#0284c7" fill-opacity="0.4" />
+  <text x="32" y="61" font-family="sans-serif" font-weight="900" font-size="14" fill="#38bdf8" text-anchor="middle">+</text>
+
+  <circle cx="158" cy="52" r="12" fill="#f59e0b" fill-opacity="0.4" />
+  <text x="158" y="57" font-family="sans-serif" font-weight="900" font-size="14" fill="#fef08a" text-anchor="middle">×</text>
+
+  <!-- Title Badge -->
+  <rect x="36" y="162" width="120" height="18" rx="6" fill="#020617" fill-opacity="0.9" stroke="#38bdf8" stroke-width="1" />
+  <text x="96" y="175" font-family="sans-serif" font-weight="900" font-size="9" fill="#ffffff" text-anchor="middle">
+    MATH RUN 3D
+  </text>
+</svg>

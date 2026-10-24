@@ -1,0 +1,39 @@
+{
+  "id": "/",
+  "name": "Math Run 3D — سباق الرياضيات",
+  "short_name": "MathRun 3D",
+  "description": "لعبة سباق ومغامرات ثلاثية الأبعاد تعليمية تجمع بين السرعة والمهارة وحل المسائل الحسابية",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#020617",
+  "theme_color": "#0284c7",
+  "categories": ["games", "education"],
+  "icons": [
+    {
+      "src": "/pwa-192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/aistudio/______2_1ac79716.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
