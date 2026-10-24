@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { App as CapacitorApp } from '@capacitor/app';
 import { GameScene } from './three/gameScene';
 import { generateLevels } from './math/mathGenerator';
 import { sound } from './audio/soundEngine';
@@ -98,6 +99,7 @@ export default function App() {
   const [mathHistory, setMathHistory] = useState<{ question: MathQuestion; isCorrect: boolean; chosenOption: number }[]>([]);
   const [victoryStats, setVictoryStats] = useState<{ stars: number; accuracy: number }>({ stars: 3, accuracy: 100 });
   const [showDailyReward, setShowDailyReward] = useState<boolean>(false);
+  const [showExitConfirm, setShowExitConfirm] = useState<boolean>(false);
 
   // 3D Scene Ref & Mounting
   const canvasMountRef = useRef<HTMLDivElement>(null);
@@ -330,6 +332,39 @@ export default function App() {
       gameSceneRef.current = null;
     };
   }, [currentLevel.world, currentLevel.category, currentLevel.difficulty, getCharacterOptions]);
+
+  // Android system Back button: navigate one UI level at a time instead of closing the app.
+  useEffect(() => {
+    let active = true;
+    const backListener = CapacitorApp.addListener('backButton', () => {
+      if (!active) return;
+      if (showExitConfirm) {
+        setShowExitConfirm(false);
+        return;
+      }
+      if (showDailyReward) {
+        setShowDailyReward(false);
+        return;
+      }
+      if (status === 'playing') {
+        if (gameSceneRef.current) gameSceneRef.current.isPaused = true;
+        sound.stopMusic();
+        setStatus('paused');
+        return;
+      }
+      if (status === 'paused' || status === 'gameover' || status === 'victory' || status === 'levels' || status === 'shop' || status === 'characters' || status === 'stats') {
+        if (gameSceneRef.current) gameSceneRef.current.isPaused = true;
+        sound.stopMusic();
+        setStatus('menu');
+        return;
+      }
+      setShowExitConfirm(true);
+    });
+    return () => {
+      active = false;
+      void backListener.then(listener => listener.remove());
+    };
+  }, [status, showDailyReward, showExitConfirm]);
 
   // Powerup timer countdown interval
   useEffect(() => {
@@ -684,6 +719,19 @@ export default function App() {
           progress={progress}
           onClose={() => setStatus('menu')}
         />
+      )}
+
+      {showExitConfirm && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-6" role="dialog" aria-modal="true" aria-labelledby="exit-confirm-title">
+          <div className="w-full max-w-sm rounded-2xl border border-white/15 bg-slate-900 p-6 text-center shadow-2xl">
+            <h2 id="exit-confirm-title" className="mb-3 text-xl font-extrabold text-white">الخروج من اللعبة؟</h2>
+            <p className="mb-6 text-sm text-slate-300">اضغط رجوع مرة أخرى فقط إذا كنت تريد إغلاق التطبيق.</p>
+            <div className="flex gap-3">
+              <button className="flex-1 rounded-xl bg-cyan-500 px-4 py-3 font-bold text-slate-950" onClick={() => setShowExitConfirm(false)}>البقاء</button>
+              <button className="flex-1 rounded-xl bg-rose-600 px-4 py-3 font-bold text-white" onClick={() => void CapacitorApp.exitApp()}>خروج</button>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Daily Login Reward Popup Modal */}
